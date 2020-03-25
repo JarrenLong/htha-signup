@@ -1,0 +1,11 @@
+Hello!
+
+A new help entry has been added to the Helping Truckers Help Site! Look for "__BUSINESS_NAME__" submitted by "__SUBMITTER_CONTACT__".
+
+Please review the new submission by going to https://htha.all2a.net/admin.php (do NOT share this link, THIS IS FOR ADMINS ONLY!), and click "Verify" ASAP, so it will show up on the help list.
+
+To see what regular users would see, please go to https://htha.all2a.net/
+
+Thanks!
+
+** Quickly hacked together by Jarren Long at Books N' Bytes, Inc., https://www.booksnbytes.net **
