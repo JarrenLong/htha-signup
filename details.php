@@ -26,62 +26,118 @@ require 'register.php';
 	
 	<a href="index.php"><h3>Go Back To Home Page</h3></a>
 	
-	<table class="table table-bordered table-sm table-inverse">
-		  <thead class="thead-default">
-		    <tr>
-		      <td>Name</td>
-		      <td>Address</td>
-		      <td>City</td>
-		      <td>State</td>
-		      <td>Zip</td>
-		      <td>Latitude</td>
-		      <td>Longitude</td>
-		      <td>Phone</td>
-		      <td>HasParking</td>
-		      <td>NumParkingSpaces</td>
-		      <td>HasFood</td>
-		      <td>FoodDescription</td>
-		      <td>HasShowers</td>
-		      <td>NumShowers</td>
-		      <td>HasLaundry</td>
-		      <td>LaundryType</td>
-		      <td>InterstateExit</td>
-		      <td>BusinessHours</td>
-		      <td>BusinessWebsite</td>
-		      <td>Notes</td>
-		    </tr>
-		  </thead>
-		  <?php
-		  $regList = get_entry_by_id($_GET['id']);
-		  
-		  foreach($regList as $rec) {
-		    echo "
-		  <tr>
-		      <td>" . $rec[1] . "</td>
-		      <td>" . $rec[2] . "</td>
-		      <td>" . $rec[3] . "</td>
-		      <td>" . $rec[4] . "</td>
-			  <td>" . $rec[5] . "</td>
-		      <td>" . $rec[6] . "</td>
-			  <td>" . $rec[7] . "</td>
-			  <td>" . $rec[8] . "</td>
-			  <td>" . $rec[9] . "</td>
-			  <td>" . $rec[10] . "</td>
-		      <td>" . $rec[11] . "</td>
-		      <td>" . $rec[12] . "</td>
-		      <td>" . $rec[13] . "</td>
-		      <td>" . $rec[14] . "</td>
-			  <td>" . $rec[15] . "</td>
-		      <td>" . $rec[16] . "</td>
-			  <td>" . $rec[17] . "</td>
-			  <td>" . $rec[18] . "</td>
-			  <td>" . $rec[19] . "</td>
-			  <td>" . $rec[20] . "</td>
-          </tr>";
-		  }
-		  ?>
-        </table>
-	  
+	<?php $rec = get_entry_by_id($_GET['id'])[0]; ?>
+	
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered table-sm table-inverse">
+				<tr>
+					<td>Business/Organization Name:</td>
+					<td><?php echo $rec[1]; ?></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><?php echo $rec[2]; ?></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><?php echo $rec[3]; ?></td>
+				</tr>
+				<tr>
+					<td>State:</td>
+					<td><?php echo $rec[4]; ?></td>
+				</tr>
+				<tr>
+					<td>Zipcode:</td>
+					<td><?php echo $rec[5]; ?></td>
+				</tr>
+				<tr>
+					<td>Latitude:</td>
+					<td><?php echo $rec[6]; ?></td>
+				</tr>
+				<tr>
+					<td>Longitude:</td>
+					<td><?php echo $rec[7]; ?></td>
+				</tr>
+				<tr>
+					<td>Business Phone:</td>
+					<td><?php echo $rec[8]; ?></td>
+				</tr>
+				<tr>
+					<td>Has Parking?</td>
+					<td><?php echo $rec[9]; ?></td>
+				</tr>
+				<tr>
+					<td># Parking Spaces:</td>
+					<td><?php echo $rec[10]; ?></td>
+				</tr>
+				<tr>
+					<td>Has Food?</td>
+					<td>
+					<?php
+					if($rec[11] == 1)
+						echo "Yes";
+					else
+						echo "No";
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td>Food Description:</td>
+					<td><?php echo $rec[12]; ?></td>
+				</tr>
+				<tr>
+					<td>Has Showers?</td>
+					<td>
+					<?php
+					if($rec[13] == 1)
+						echo "Yes";
+					else
+						echo "No";
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td># of Showers:</td>
+					<td><?php echo $rec[14]; ?></td>
+				</tr>
+				<tr>
+					<td>Has Laundry?</td>
+					<td>
+					<?php
+					if($rec[15] == 1)
+						echo "Yes";
+					else
+						echo "No";
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td>Laundry Description:</td>
+					<td><?php echo $rec[16]; ?></td>
+				</tr>
+				<tr>
+					<td>Interstate Exit:</td>
+					<td><?php echo $rec[17]; ?></td>
+				</tr>
+				<tr>
+					<td>Business Hours:</td>
+					<td><?php echo $rec[18]; ?></td>
+				</tr>
+				<tr>
+					<td>Business Website:</td>
+					<td><?php echo $rec[19]; ?></td>
+				</tr>
+				<tr>
+					<td>Comments/Notes:</td>
+					<td><?php echo $rec[20]; ?></td>
+				</tr>
+			</table>
+		</div>
+		<div class ="col-md-6">
+			<h3>TODO: Map goes here ...</h3>
+		</div>
+	</div>
 	<br/>
 	
 	<div class="row">

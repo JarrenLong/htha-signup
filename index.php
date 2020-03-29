@@ -16,9 +16,9 @@
 <?php
 require 'register.php';
 
-$Name=$Address=$City=$State=$Zip=$Latitude=$Longitude=$Phone=$FoodDescription=$InterstateExit=$BusinessHours=$BusinessWebsite=$Notes=$SubmitterContact="";
+$Name=$Address=$City=$State=$Zip=$Latitude=$Longitude=$Phone=$FoodDescription=$InterstateExit=$BusinessHours=$BusinessWebsite=$Notes=$SubmitterContact=$LaundryType="";
 $HasParking=$HasFood=$HasShowers=$HasLaundry=false;
-$NumParkingSpaces=$NumShowers=$LaundryType=0;
+$NumParkingSpaces=$NumShowers=0;
 
 $err = "";
 
@@ -114,99 +114,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 	
 	<h1 class="form-signin-heading">Help Truckers Help America</h1>
-
-	<h2 id="register">Current Listings (click "View Details" next to one for more info)</h2>
 	
-	<table class="table table-bordered table-sm table-inverse">
-		  <thead class="thead-default">
-		    <tr>
-			  <td>&nbsp;</td>
-		      <td>Name</td>
-		      <td>Address</td>
-		      <td>City</td>
-		      <td>State</td>
-		      <td>Zip</td>
-		      <td>Notes</td>
-		    </tr>
-		  </thead>
-		  <?php
-		  $regList = get_entry_list(true);
-		  
-		  foreach($regList as $rec) {
-		    echo "
-		    <tr>
-			  <td><a href='details.php?id=" . $rec[0] . "'>View Details</a></td>
-		      <td>" . $rec[1] . "</td>
-		      <td>" . $rec[2] . "</td>
-		      <td>" . $rec[3] . "</td>
-		      <td>" . $rec[4] . "</td>
-			  <td>" . $rec[5] . "</td>
-			  <td>" . $rec[20] . "</td>
-            </tr>";
-		  }
-		  ?>
-        </table>
-	  
-	  
-	  
 	<h2 id="register">Add a Listing!</h2>
+	
+	<p>Before adding a new listing, please <a href="listings.php">check the current listings</a> to make sure that the business you are listing is not already posted. Thank you!</p>
 	
 	<div class="row">
 	  <div class="col-12">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 		  <div class="form-group">
 		    <label for="inputName" class="sr-only">Business/Organization Name</label>
-            <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Business/Organization Name" value="<?php echo $Name;?>" required="">
+            <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Business/Organization Name" value="<?php echo $Name;?>"  maxlength="100" required="">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputAddress" class="sr-only">Street Address</label>
-            <input type="text" id="inputAddress" name="inputAddress" class="form-control" placeholder="Street Address" value="<?php echo $Address;?>" required="">
+            <input type="text" id="inputAddress" name="inputAddress" class="form-control" placeholder="Street Address" value="<?php echo $Address;?>" maxlength="100" required="">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputCity" class="sr-only">City</label>
-            <input type="text" id="inputCity" name="inputCity" class="form-control" placeholder="City" value="<?php echo $City;?>" required="">
+            <input type="text" id="inputCity" name="inputCity" class="form-control" placeholder="City" value="<?php echo $City;?>" maxlength="100" required="">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputState" class="sr-only">State</label>
-            <input type="text" id="inputState" name="inputState" class="form-control" placeholder="State" value="<?php echo $State;?>" required="">
+            <input type="text" id="inputState" name="inputState" class="form-control" placeholder="State" value="<?php echo $State;?>" maxlength="40" required="">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputZip" class="sr-only">Zipcode</label>
-            <input type="text" id="inputZip" name="inputZip" class="form-control" placeholder="Zipcode" value="<?php echo $Zip;?>" required="">
+            <input type="text" id="inputZip" name="inputZip" class="form-control" placeholder="Zipcode" value="<?php echo $Zip;?>" maxlength="10" required="">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputLatitude" class="sr-only">Latitude (if known)</label>
-            <input type="text" id="inputLatitude" name="inputLatitude" class="form-control" placeholder="Latitude (if known)" value="<?php echo $Latitude;?>">
+            <input type="text" id="inputLatitude" name="inputLatitude" class="form-control" placeholder="Latitude (if known)" value="<?php echo $Latitude;?>" maxlength="64">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputLongitude" class="sr-only">Longitude (if known)</label>
-            <input type="text" id="inputLongitude" name="inputLongitude" class="form-control" placeholder="Longitude (if known)" value="<?php echo $Longitude;?>">
+            <input type="text" id="inputLongitude" name="inputLongitude" class="form-control" placeholder="Longitude (if known)" value="<?php echo $Longitude;?>" maxlength="64">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputInterstateExit" class="sr-only">Nearest Interstate/Exit (if known)</label>
-            <input type="text" id="inputInterstateExit" name="inputInterstateExit" class="form-control" placeholder="Nearest Interstate/Exit (if known)" value="<?php echo $InterstateExit;?>">
+            <input type="text" id="inputInterstateExit" name="inputInterstateExit" class="form-control" placeholder="Nearest Interstate/Exit (if known)" value="<?php echo $InterstateExit;?>" maxlength="100">
           </div>
 		  
 		  <div class="form-group">
 		    <label for="inputBusinessHours" class="sr-only">Business hours (if known)</label>
-            <input type="text" id="inputBusinessHours" name="inputBusinessHours" class="form-control" placeholder="Business hours (if known)" value="<?php echo $BusinessHours;?>">
+            <input type="text" id="inputBusinessHours" name="inputBusinessHours" class="form-control" placeholder="Business hours (if known)" value="<?php echo $BusinessHours;?>" maxlength="100">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputPhone" class="sr-only">Business Phone Number (if known)</label>
-            <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Business Phone Number (if known)" value="<?php echo $Phone;?>">
+            <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Business Phone Number (if known)" value="<?php echo $Phone;?>" maxlength="50">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputBusinessWebsite" class="sr-only">Business website (if known)</label>
-            <input type="text" id="inputBusinessWebsite" name="inputBusinessWebsite" class="form-control" placeholder="Business website (if known)" value="<?php echo $BusinessWebsite;?>">
+            <input type="text" id="inputBusinessWebsite" name="inputBusinessWebsite" class="form-control" placeholder="Business website (if known)" value="<?php echo $BusinessWebsite;?>" maxlength="255">
 		  </div>
 		  
 		  <div class="form-group">
@@ -226,7 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  
 		  <div class="form-group">
 		    <label for="inputFoodDescription">If yes, where can food be accessed at?</label>
-            <input type="text" id="inputFoodDescription" name="inputFoodDescription" class="form-control" placeholder="If yes, where can food be accessed at?" value="<?php echo $FoodDescription;?>">
+            <input type="text" id="inputFoodDescription" name="inputFoodDescription" class="form-control" placeholder="If yes, where can food be accessed at?" value="<?php echo $FoodDescription;?>" maxlength="1000">
 		  </div>
 		  
 		  <div class="form-check">
@@ -245,24 +213,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="inputLaundryType">If yes, what kind of laundry acccess (choose one)</label>
-		    <select class="form-control" name="inputLaundryType" id="inputLaundryType">
-		      <option value="0" selected>None</option>
-		      <option value="1">2</option>
-		      <option value="2">3</option>
-		      <option value="3">4</option>
-		      <option value="4">5</option>
-		    </select>
+		    <label for="inputLaundryType">If yes, what kind of laundry acccess?</label>
+			<input type="text" id="inputLaundryType" name="inputLaundryType" class="form-control" placeholder="If yes, what kind of laundry acccess?" value="<?php echo $LaundryType;?>" maxlength="200">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputNotes" class="sr-only">Other comments/notes (optional)</label>
-            <input type="text" id="inputNotes" name="inputNotes" class="form-control" placeholder="Other comments/notes" value="<?php echo $Notes;?>">
+            <input type="text" id="inputNotes" name="inputNotes" class="form-control" placeholder="Other comments/notes" value="<?php echo $Notes;?>" maxlength="1000">
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="inputSubmitterContact" class="sr-only">Your contact info (in case we have questions). This will NOT be shared!</label>
-            <input type="text" id="inputSubmitterContact" name="inputSubmitterContact" class="form-control" placeholder="Your contact info (in case we have questions). This will NOT be shared!" value="<?php echo $SubmitterContact;?>">
+            <input type="text" id="inputSubmitterContact" name="inputSubmitterContact" class="form-control" placeholder="Your contact info (in case we have questions). This will NOT be shared!" value="<?php echo $SubmitterContact;?>" maxlength="200">
 		  </div>
 		  
           <button class="btn btn-lg btn-primary btn-block" type="submit">Save Entry</button>
