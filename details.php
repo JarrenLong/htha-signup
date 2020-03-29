@@ -24,7 +24,9 @@ require 'register.php';
 
 	<h2 id="register">Listings Details</h2>
 	
-	<a href="index.php"><h3>Go Back To Home Page</h3></a>
+	<a href="listings.php"><h3>Go Back To Listings Page</h3></a>
+	
+	<br/>
 	
 	<?php $rec = get_entry_by_id($_GET['id'])[0]; ?>
 	
@@ -65,7 +67,14 @@ require 'register.php';
 				</tr>
 				<tr>
 					<td>Has Parking?</td>
-					<td><?php echo $rec[9]; ?></td>
+					<td>
+					<?php
+					if($rec[9] == 1)
+						echo "Yes";
+					else
+						echo "No";
+					?>
+					</td>
 				</tr>
 				<tr>
 					<td># Parking Spaces:</td>

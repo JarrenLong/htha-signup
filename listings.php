@@ -17,6 +17,10 @@
 
 	<h2 id="register">Current Listings (click "View Details" next to one for more info)</h2>
 	
+	<a href="index.php"><h3>Go Back To Add Listing Page</h3></a>
+	
+	<br/>
+	
 	<table class="table table-bordered table-sm table-inverse">
 		<thead class="thead-default">
 			<tr>
