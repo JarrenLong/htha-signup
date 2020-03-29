@@ -14,7 +14,7 @@ require 'register.php';
     <meta name="author" content="Jarren Long, Books N' Bytes, Inc.">
     <link rel="icon" href="favicon.ico">
     <title>Helping Truckers Help America - Help Listing Details</title>
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet" />
   </head>
   <body class="bg">
@@ -102,6 +102,5 @@ require 'register.php';
 	</div>
 
     </div>
-    <script src="ie10-viewport-bug-workaround.js.download"></script>
   </body>
 </html>
